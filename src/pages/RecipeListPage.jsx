@@ -15,7 +15,10 @@ export const RecipeListPage = ({ setSelectedRecipe }) => {
     );
 
     return (
-        <Center minH="100vh" flexDir="column">
+        <Center minH="100vh"
+                flexDir="column"
+                justifyContent="flex-start"> 
+
             <Heading>Your Recipe App</Heading>
 
             <Input placeholder="Search recipes..."
@@ -23,12 +26,16 @@ export const RecipeListPage = ({ setSelectedRecipe }) => {
             onChange={(event)=> setSearchTerm(event.target.value)}
             />
 
-            <SimpleGrid columns={{ base: 1, md: 3 }}
+            <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }}
             gap= {6}>
 
             {filteredRecipes.map((item) => (<Box key={item.recipe.label} p={4}
             
-            borderRadius="lg" onClick={() => setSelectedRecipe(item)}
+            borderRadius="lg"
+            border="1px solid"
+            cursor="pointer"
+            _hover={{ transform: "translateY(-4px)"}}
+            onClick={() => setSelectedRecipe(item)}
             >
                 <Image src={item.recipe.image}
                 w="100%"
